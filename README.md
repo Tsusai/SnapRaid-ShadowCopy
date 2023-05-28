@@ -8,6 +8,7 @@ As it is written now, requires snapraid-helper, but could be edited to fit one's
 - Snapraid-Helper (Script could be rewritten to not use this)
 
 ### Crude Instructions
+- Place Sync.ps1 with Snapraid
 - Install the Shadow Copy Cmdlets
  - Run Powershell as an Administrator
     > Install-Module -Name CPolydorou.ShadowCopy
