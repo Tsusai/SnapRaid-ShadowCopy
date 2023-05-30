@@ -95,7 +95,7 @@ for($i=0; $i -lt $SnapraidConfig.Length; $i++)
 #Save the shadow config version
 Write-Host "Saving Shadow Copy version of snapraid configuration"
 #$SnapraidConfig | Out-File "snapraid_shadow.conf" -Encoding "UTF8"
-[System.IO.File]::WriteAllLines("snapraid_shadow.conf", $SnapraidConfig)
+[System.IO.File]::WriteAllLines("$scriptPath\snapraid_shadow.conf", $SnapraidConfig)
 
 #Create and Mount Shadow Copies. Save the ID of the Shadow Copy for later removal
 Write-Host "Creating and Mounting Shadow Copies"
