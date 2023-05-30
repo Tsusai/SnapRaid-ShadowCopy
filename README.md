@@ -1,5 +1,5 @@
 # SnapRaid-ShadowCopy
-A basic Powershell Script to setup leverage shadowcopys of SnapRaid data drives.
+A Powershell Script to setup leverage shadowcopys of SnapRaid data drives.
 Needs to be edited manually for now
 As it is written now, requires snapraid-helper, but could be edited to fit one's needs. Runs snapraid touch prior to syncing. On Sundays, it will sync and scr
 
@@ -15,7 +15,7 @@ As it is written now, requires snapraid-helper, but could be edited to fit one's
   
 - Edit SnapRaid-ShadowCopy.ps1
    - In the User Editable Section:
-     - Add Drives to be ignored (non-snapraid data disk, like parity and OS)
+     - Add Drives to be ignored (non-snapraid data disk, like parity and OS). Must have trailing \
      - Select days you want scrubs to occur as a comma separated list (ie "Sunday","Tuesday","Friday")
      - Edit Command/Parameter to your liking
  
