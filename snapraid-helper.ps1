@@ -454,7 +454,7 @@ Function RunSnapraid ($sargument){
 		if (($ScrubPercent -ne 999) -and ($sargument -eq "scrub")) {
 			& "$exe" -c $configfile $sargument -p $ScrubPercent -l $SnapRAIDLogfile 2>&1 3>&1 4>&1 | %{ "$_" } | tee-object -file $TmpOutput 
 		}
-		ElseIf ($sargument1 -eq "sync" -and $config["ForceNoCopy"] -eq 1){
+		ElseIf ($sargument -eq "sync" -and $config["ForceNoCopy"] -eq 1){
 			& "$exe" -c $configfile $sargument -N -l $SnapRAIDLogfile 2>&1 3>&1 4>&1 | %{ "$_" } | tee-object -file $TmpOutput 
 		}
         else {
