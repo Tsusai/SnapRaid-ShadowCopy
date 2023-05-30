@@ -50,7 +50,7 @@ Write-Host "Reading $($SnapraidConfig)"
 for($i=0; $i -lt $SnapraidConfig.Length; $i++)
 {
     # Find Disk Sections
-    if ($SnapraidConfig[$i].StartsWith("disk"))
+    if ($SnapraidConfig[$i].StartsWith("disk") -or $SnapraidConfig[$i].StartsWith("data"))
     {
         $SnapRaidDrive = ""
         #Split the line by spaces
