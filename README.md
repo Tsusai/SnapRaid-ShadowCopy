@@ -10,12 +10,11 @@ As it is written now, requires snapraid-helper, but could be edited to fit one's
 
 ### Crude Instructions
 - Place SnapRaid-ShadowCopy.ps1 with Snapraid
-- Install the Shadow Copy Cmdlets
- - Run Powershell as an Administrator
+- Install the Shadow Copy Cmdlets as Administrator
     > Install-Module -Name CPolydorou.ShadowCopy
   
 - Edit SnapRaid-ShadowCopy.ps1
-   - Edit User Editable Section.
+   - In the User Editable Section:
      - Add Drives to be ignored (non-snapraid data disk, like parity and OS)
      - Select days you want scrubs to occur as a comma separated list (ie "Sunday","Tuesday","Friday")
      - Edit Command/Parameter to your liking
