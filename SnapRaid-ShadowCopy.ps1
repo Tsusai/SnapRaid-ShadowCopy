@@ -113,7 +113,7 @@ Write-Host "Running SnapRaid Touch"
 Invoke-Expression -command "$TouchCommand $TouchParams"
 
 $DoW = (get-date).DayOfWeek
-if ($scrubdays.Contains($DoW))
+if ($scrubdays -contains $DoW)
 {
     Write-Host "Running Snapraid Sync & Scrub"
     Invoke-Expression -command "$ScrubCommand $ScrubParams"
