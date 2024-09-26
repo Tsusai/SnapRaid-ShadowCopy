@@ -10,19 +10,38 @@ $IgnoreDrives = @(
     "C:\", "S:\", "C:\mnt\1-4\", "C:\mnt\2-4\"
 )
 
-#Programs to use for each action
-#If using snapraid-helper, use snapraid_shadow.conf as the config file
-#in snapraid-helper.ini
+#Programs to use for each action (Touch/Sync/Scrub)
+
+#Touch doesn't need to be shadow'd
 $TouchCommand= ".\snapraid.exe"
 $TouchParams = "touch"
-$SyncCommand = ".\snapraid-helper.ps1"
-$SyncParams = ""#"-N"
+
+#Sync
+#This powershell script will create a snapraid_shadow.conf for use.
+#If using Snapraid-Helper, create a copy that will be used strictly for Sync like snapraid_helper-shadow.ps1 and snapraid_helper-shadow.ini
+#Within the relevant snapraid-helper.ini, set the snapraid config file to snapraid_shadow.conf
+#Examples
+#$SyncCommand = ".\snapraid-helper-shadow.ps1"
+#$SyncParams = "sync"
+#$SyncCommand = ".\snapraid.exe"
+#$SyncParams = "-c shadowraid_shadow.conf sync"
+
+$SyncCommand = ".\snapraid-helper-shadow.ps1"
+$SyncParams = "sync"
+
+#Scrub actions
+#In my experience, you do not want to use shadow copies with the scrub
+#$ScrubCommand = ".\snapraid-helper.ps1"
+#$ScrubParams = 'scrub'
+#$ScrubCommand = ".\snapraid.exe"
+#$ScrubParams = '-p20 scrub'
+
 $ScrubCommand = ".\snapraid-helper.ps1"
-$ScrubParams = 'syncandscrub -scrubpercent 20'
+$ScrubParams = 'scrub'
 
 #######################################################################
-
-# Not really meant to be customized below 
+# Not really meant to be customized below this area 
+#######################################################################
 
 #Set to Script Path
 $scriptPath = (Split-Path $MyInvocation.MyCommand.Path)
@@ -112,17 +131,15 @@ for($i=0; $i -lt $DataDrives.Length; $i++)
 Write-Host "Running SnapRaid Touch"
 Invoke-Expression -command "$TouchCommand $TouchParams"
 
+Write-Host "Running Snapraid Sync"
+Invoke-Expression -command "$SyncCommand $SyncParams"
+
 $DoW = (get-date).DayOfWeek
-if ($scrubdays -contains $DoW)
+if ($scrubdays -Contains $DoW)
 {
-    Write-Host "Running Snapraid Sync & Scrub"
+    Write-Host "Running Snapraid Scrub"
     Invoke-Expression -command "$ScrubCommand $ScrubParams"
 } 
-else
-{
-    Write-Host "Running Snapraid Sync"
-    Invoke-Expression -command "$SyncCommand $SyncParams"
-}
 
 #Unmount and Remove Shadows
 Write-Host "Unmounting & Removing Shadows"
