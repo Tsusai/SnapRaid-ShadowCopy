@@ -18,7 +18,7 @@ $TouchParams = "touch"
 
 #Sync
 #This powershell script will create a snapraid_shadow.conf for use.
-#If using Snapraid-Helper, create a copy that will be used strictly for Sync like snapraid_helper-shadow.ps1 and snapraid_helper-shadow.ini
+#If using Snapraid-Helper, create a copy that will be used strictly for Sync like snapraid-helper-shadow.ps1 and snapraid-helper-shadow.ini
 #Within the relevant snapraid-helper.ini, set the snapraid config file to snapraid_shadow.conf
 #Examples
 #$SyncCommand = ".\snapraid-helper-shadow.ps1"
